@@ -1,0 +1,18 @@
+[Database]
+Path = sqlite:////PATH/TO/DB
+
+[Telegram]
+access_token = ACCESS_TOKEN
+
+[RSS]
+link1 = http://static.feed.rbc.ru/rbc/logical/footer/news.rss
+link2 = http://static.feed.rbc.ru/rbc/logical/footer/rbcmoney_news.rss
+link3 = http://www.vedomosti.ru/rss/news
+link4 = http://www.vedomosti.ru/rss/articles
+link5 = http://www.kommersant.ru/RSS/daily.xml
+link6 = http://www.kommersant.ru/RSS/news.xml
+link7 = http://www.kommersant.ru/RSS/corp.xml
+
+[Export_params]
+delay_between_messages = 5
+pub_pause = 0
