@@ -25,7 +25,7 @@ class Source(object):
                                     'Финансы', 'news', 'finance', 'Финансы. Рынок', 'Финансы', 'Занять',
                                     'Инвестировать', 'Бизнес', 'business', 'Недвижимость. Рынок', 'В городе',
                                     'Недвижимость', 'realty', 'own_business', 'Технологии и медиа',
-                                    'technology_and_media', 'Hi-Tech', 'technology', 'Стартапы']
+                                    'technology_and_media', 'Hi-Tech', 'technology', 'Стартапы', 'Правительство']
 
     def refresh(self):
         self.refresh_rbc()
@@ -122,12 +122,14 @@ class Source(object):
                            int(calendar.timegm((i['published_parsed'])))) for i in self.new_rss_row(data['entries'])]
 
     def refresh_vedomosti_material(self):
+        if_not_vedomosti = lambda x: x.split('/')[2][4:] if x.split('/')[2][4:] == 'vedomosti.ru' else 'vedomosti.ru'
+        for_vedomosti_material = lambda x: x.split('/')[3] if x.split('/')[2][4:] == 'vedomosti.ru' else 'Правительство'
         data = feedparser.parse(self.links[3])
         self.news += [News(i['title'],
                            i['link'],
                            self.clck_ru.short_link(i['link']),
-                           i['link'].split('/')[2][4:],
-                           i['link'].split('/')[3],
+                           if_not_vedomosti(i['link']),
+                           for_vedomosti_material(i['link']),
                            int(calendar.timegm((i['published_parsed'])))) for i in self.new_rss_row(data['entries'])]
 
     def refresh_kommersant_daily(self):
