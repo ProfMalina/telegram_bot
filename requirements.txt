@@ -3,7 +3,7 @@ feedparser==5.2.1
 certifi==2016.9.26
 future==0.16.0
 python-telegram-bot==5.2.0
-urllib3==1.25.3
+urllib3==1.26.5
 Bitly-api==0.3
 requests==2.20.0
 beautifulsoup4==4.5.3
